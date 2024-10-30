@@ -5,7 +5,7 @@ This project aims to classify Alzheimer’s Disease (AD) presence using EEG band
 ## Project Overview
 
 ### Data
-The dataset consists of EEG recordings from four groups:
+The dataset used in this project can be found [here on OSF](https://osf.io/s74qf/). It consists of EEG recordings from four groups:
 - **Group A**: Healthy elderly subjects, eyes open
 - **Group B**: Healthy elderly subjects, eyes closed
 - **Group C**: Probable AD patients, eyes open
