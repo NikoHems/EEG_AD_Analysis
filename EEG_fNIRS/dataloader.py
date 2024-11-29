@@ -48,6 +48,10 @@ class EEGData(DataModule):
 
         Parameters:
         file_name: the name of the file you want to take as input data. It will add the root path of it in this function
+
+        Returns:
+        num_features: number of features of the signal
+        num_classes: number of class for classification
         """
         file_path = os.path.join(self.root, file_name)
         data = pd.read_csv(file_path)
@@ -56,11 +60,16 @@ class EEGData(DataModule):
         y = data['label']
         X = data.drop(columns=['label'])
 
+        num_classes = data['label'].nunique()
+        num_features = X.shape[1]
+
         self.X = torch.tensor(X.values, dtype=torch.float32)
         self.y = torch.tensor(y.values, dtype=torch.long)
 
         print('-'*20)
         print(f">>> Read data: X shape: {self.X.shape}  Y shape: {self.y.shape}")
+
+        return (num_features, num_classes)
 
     def get_dataloader(self, train):
         i = slice(0, self.num_train) if train else slice(self.num_train, None)
